@@ -1,0 +1,41 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.4.7'
+}
+
+subprojects {
+    group = "uz.xtreme"
+    version = "1.0.0"
+
+    pluginManager.apply('maven-publish')
+
+    repositories {
+        mavenCentral()
+    }
+
+    jar {
+        archiveFileName.set("demo-${project.name}-${project.version}.jar")
+    }
+
+    test {
+        useJUnitPlatform()
+
+        jvmArgs.add("-Xmx2048m")
+
+        testLogging {
+            events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
+            showStandardStreams = true
+            exceptionFormat = TestExceptionFormat.FULL
+        }
+    }
+}

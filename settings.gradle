@@ -1,0 +1,5 @@
+rootProject.name = 'authorization-server'
+
+include(":shared:platform")
+include(":shared:commons")
+include(":auth")

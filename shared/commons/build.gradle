@@ -1,0 +1,14 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api(project(':shared:platform'))
+    api('org.springframework.boot:spring-boot-starter-parent')
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}

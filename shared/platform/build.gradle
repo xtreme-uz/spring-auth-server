@@ -1,0 +1,15 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    constraints {
+        api 'org.springframework.cloud:spring-cloud-dependencies:2021.0.4'
+        api 'org.springframework.boot:spring-boot-starter-parent:2.7.4'
+        api 'org.springframework.security:spring-security-oauth2-authorization-server:0.3.1'
+    }
+}
