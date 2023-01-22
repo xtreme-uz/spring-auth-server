@@ -1,41 +1,35 @@
-import org.gradle.api.tasks.testing.logging.TestExceptionFormat
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
 buildscript {
     repositories {
         gradlePluginPortal()
         mavenCentral()
     }
+    ext {
+        set("springCloudVersion", "2021.0.5")
+    }
 }
 
 plugins {
-    id 'java-library'
-    id 'org.springframework.boot' version '2.4.7'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+repositories {
+    mavenCentral()
 }
 
 subprojects {
     group = "uz.xtreme"
     version = "1.0.0"
 
-    pluginManager.apply('maven-publish')
+    apply plugin: 'maven-publish'
 
     repositories {
         mavenCentral()
     }
 
-    jar {
-        archiveFileName.set("demo-${project.name}-${project.version}.jar")
-    }
-
-    test {
-        useJUnitPlatform()
-
-        jvmArgs.add("-Xmx2048m")
-
-        testLogging {
-            events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
-            showStandardStreams = true
-            exceptionFormat = TestExceptionFormat.FULL
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
 }

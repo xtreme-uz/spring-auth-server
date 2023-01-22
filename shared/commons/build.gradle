@@ -7,8 +7,5 @@ repositories {
 }
 
 dependencies {
-    api(project(':shared:platform'))
-    api('org.springframework.boot:spring-boot-starter-parent')
-
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    api project(':shared:platform')
 }
