@@ -4,13 +4,13 @@ buildscript {
         mavenCentral()
     }
     ext {
-        set("springCloudVersion", "2021.0.5")
+        set("springCloudVersion", "2022.0.0")
     }
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.7.8'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'org.springframework.boot' version '3.0.2'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
 repositories {

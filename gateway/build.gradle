@@ -15,11 +15,8 @@ repositories {
 dependencies {
     compileOnly project(':shared:platform')
 
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
-    implementation 'org.springframework.cloud:pring-cloud-starter-sleuth'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
     implementation project(':shared:commons')
 
