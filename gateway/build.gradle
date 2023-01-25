@@ -21,7 +21,6 @@ dependencies {
     implementation project(':shared:commons')
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.projectreactor:reactor-test'
 }
 
 dependencyManagement {

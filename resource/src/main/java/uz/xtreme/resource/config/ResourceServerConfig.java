@@ -13,9 +13,7 @@ public class ResourceServerConfig {
         http
                 .securityMatcher("/resource/**")
                 .authorizeHttpRequests()
-                .requestMatchers("/resource/**").hasAuthority("SCOPE_resource.read")
-                .and()
-                .oauth2ResourceServer()
+                .and().oauth2ResourceServer()
                 .jwt();
         return http.build();
     }
