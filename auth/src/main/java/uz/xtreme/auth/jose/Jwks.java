@@ -4,6 +4,7 @@ import com.nimbusds.jose.jwk.Curve;
 import com.nimbusds.jose.jwk.ECKey;
 import com.nimbusds.jose.jwk.OctetSequenceKey;
 import com.nimbusds.jose.jwk.RSAKey;
+import lombok.experimental.UtilityClass;
 
 import javax.crypto.SecretKey;
 import java.security.KeyPair;
@@ -13,12 +14,8 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
+@UtilityClass
 public class Jwks {
-
-    private Jwks() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static RSAKey generateRsa() {
         KeyPair keyPair = KeyGeneratorUtils.generateRsaKey();
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
