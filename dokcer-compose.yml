@@ -2,6 +2,20 @@ version: '3.9'
 
 services:
 
+  auth-service:
+    image: auth-service
+    build:
+      context: ./auth
+    restart: on-failure
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+    command:
+      - java
+      - -jar
+      - /opt/demo/app.jar
+
   gateway:
     image: gateway
     build:
@@ -18,20 +32,6 @@ services:
     depends_on:
       - auth-service
 
-  auth-service:
-    image: auth-service
-    build:
-      context: ./auth
-    restart: on-failure
-    ports:
-      - "9000:9000"
-    networks:
-      - backend
-    command:
-      - java
-      - -jar
-      - /opt/demo/app.jar
-
   resource-service:
     image: resource-service
     build:
@@ -45,6 +45,8 @@ services:
       - java
       - -jar
       - /opt/demo/app.jar
+    depends_on:
+      - gateway
 
 networks:
   backend:
